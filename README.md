@@ -6,7 +6,7 @@ A sleek, lightweight task management application built from scratch using **Vani
 
 ## 🚀 Live Demo
 
-Check out the live deployment here: **[Link to your live site (e.g., GitHub Pages, Netlify)]**
+Check out the live deployment here: **https://michaelfrontend254.github.io/TaskMaster-Pro/**
 
 ---
 
