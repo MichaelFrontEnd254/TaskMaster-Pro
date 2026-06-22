@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📝</text></svg>">
+</head>
+
+<body>
+    <h1 class="main-title">TaskMaster Pro</h1>
+    <div class="top"></div>
+    <div class="app-container">
+        <div class="top-background"></div>
+        <p style="font-size: 14px;">Stay organized and productive with TaskMaster Pro. Manage your daily tasks, set
+            reminders, and track your
+            progress effortlessly.
+        </p>
+        <form id="task-add-form">
+            <input type="text" id="task-input" placeholder="Enter task description..." required>
+            <button type="submit" class="add-btn" id="add-btn">Add Task <i class="ri-add-circle-fill"></i></button>
+            <button type="button" id="save-btn" style="display: none;">Save <i class="ri-save-fill"></i></button>
+        </form>
+
+        <div class="toast" id="toast">
+            <p id="toast-message">ddd</p>
+        </div>
+
+        <div class="quick-actions">
+            <span id="task-count">tasks</span>
+            <button id="clear-all-btn" onclick="clearAllTasks()">Clear All Tasks <i
+                    class="ri-close-circle-fill"></i></button>
+        </div>
+
+        <h3>Tasks container <i class="ri-todo-fill"></i></h3>
+        <ul id="task-list">
+            <!-- Tasks will be dynamically inserted here -->
+        </ul>
+
+        <h3>Done Tasks <i class="ri-check-double-fill"></i></h3>
+        <button id="clear-done-btn" onclick="clearDoneTasks()">Clear Done Tasks <i
+                class="ri-close-circle-fill"></i></button>
+        <ul id="done-tasks">
+            <!-- Done tasks will be dynamically inserted here -->
+        </ul>
+
+    </div>
+    <script src="JS/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,419 @@
+:root {
+    --primary-color: #6366f1;
+    --secondary-color: #8b5cf6;
+    --accent-color: #f59e0b;
+    --text-color: #1f2937;
+    --bg-color: #f9fafb;
+    --card-bg: #ffffff;
+    --border-color: #e5e7eb;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.main-title {
+    text-align: center;
+    color: #f9fafb;
+    margin-bottom: 10px;
+    font-size: 24px;
+    z-index: 999;
+}
+
+.app-container {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    z-index: 0;
+}
+
+.top-background {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+
+    height: 150px;
+    width: 100%;
+    border-radius: 12px 12px 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    filter: blur(80px);
+    transform: scale(1.1);
+}
+
+h1,
+p,
+form {
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+p {
+    color: #fef3c7;
+    margin-bottom: 30px;
+    font-family: 14px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px 15px;
+    border: 0.5px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    font-size: 14px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.add-btn {
+    padding: 12px 20px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.6s ease;
+}
+
+.add-btn:hover {
+    background-color: #8b5cf6;
+}
+
+#clear-all-btn {
+    padding: 8px;
+    font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    color: var(--danger-color);
+    cursor: pointer;
+    transition: all 0.6s ease;
+    background-color: #ff949452;
+}
+
+#clear-all-btn:hover {
+    background-color: #ef444469;
+}
+
+.delete-task-btn {
+    background: transparent;
+    color: var(--danger-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.6s ease;
+    position: relative;
+}
+
+.delete-task-btn:hover {
+    background-color: var(--danger-color);
+}
+
+.delete-task-btn:active {
+    background-color: #dc2626;
+}
+
+.delete-task-btn sub {
+    font-size: 10px;
+    position: absolute;
+    right: 0;
+}
+
+.quick-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f3f4f6;
+    border-radius: 8px;
+}
+
+#task-count {
+    font-size: 12px;
+    color: var(--text-color);
+    text-align: left;
+}
+
+h3 {
+    color: var(--primary-color);
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background-color: #f1f5f9;
+    border-left: 4px solid var(--primary-color);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
+}
+
+li:hover {
+    background-color: #f3f4f6;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+/* Container block */
+.custom-checkbox {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+    font-family: sans-serif;
+}
+
+/* HIDE THE DEFAULT BROWSER CHECKBOX COMPLETELY */
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* CREATE THE CUSTOM BOX */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: #eee;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    /* Smooth rounded corners */
+    transition: all 0.2s ease-in-out;
+}
+
+/* HOVER EFFECT: Darker border when hovering */
+.custom-checkbox:hover input~.checkmark {
+    border-color: #007bff;
+    background-color: #f0f7ff;
+}
+
+/* CHECKED STATE: Change background color */
+.custom-checkbox input:checked~.checkmark {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+}
+
+/* CREATE THE CHECKMARK/ARROW (Hidden by default) */
+.checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* SHOW THE CHECKMARK WHEN CHECKED */
+.custom-checkbox input:checked~.checkmark::after {
+    display: block;
+}
+
+/* STYLE THE CHECKMARK ARROW */
+/* We build an L-shape border and rotate it 45 degrees */
+.custom-checkbox .checkmark::after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2.5px 2.5px 0;
+    /* Creates the L shape */
+    transform: rotate(45deg);
+    /* Rotates L into a checkmark */
+}
+
+span {
+    flex: 1;
+}
+
+.task-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.task-actions button {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+.task-actions .edit-btn {
+    background-color: var(--accent-color);
+}
+
+.task-actions .edit-btn:hover {
+    background-color: #d97706;
+}
+
+.task-actions .delete-btn {
+    background-color: var(--danger-color);
+}
+
+.task-actions .delete-btn:hover {
+    background-color: #dc2626;
+}
+
+#task-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.completed {
+    opacity: 0.6;
+}
+
+.completed span {
+    text-decoration: line-through;
+    color: #9ca3af;
+}
+
+.empty-state {
+    text-align: center;
+    color: #9ca3af;
+    padding: 40px;
+}
+
+.empty-state p {
+    margin: 0;
+}
+
+#done-tasks {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--success-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    transform: translateX(150%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+#save-btn {
+    background-color: var(--success-color);
+    border: none;
+    cursor: pointer;
+    transition: all 0.6s ease;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 8px;
+    color: white;
+    position: relative;
+}
+
+#save-btn:hover {
+    background-color: #10b981be;
+}
+
+#edit-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.6s ease;
+    border-radius: 8px;
+    color: var(--accent-color);
+    position: relative;
+}
+
+
+#edit-btn:hover {
+    background-color: #d97706be;
+}
+
+
+#edit-btn sub {
+    font-size: 10px;
+    position: absolute;
+    right: 0;
+    margin-top: 3px;
+}
+
+#clear-done-btn {
+    padding: 8px;
+    font-size: 12px;
+    border: none;
+    border-radius: 8px;
+    color: var(--danger-color);
+    cursor: pointer;
+    transition: all 0.6s ease;
+    background-color: #ff949452;
+    text-align: right;
+    margin-right: 0;
+    margin-left: auto;
+    margin-bottom: 10px;
+    display: block;
+}
