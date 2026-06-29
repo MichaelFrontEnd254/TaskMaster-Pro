@@ -4,6 +4,31 @@ let taskState = {
     selectedTasks: savedTasks || []
 } || [];
 
+let toastTimer;
+
+function showToast(message, isError = false) {
+    const toast = document.getElementById('toast');
+
+    // Clear any existing timer to prevent premature hiding
+    clearTimeout(toastTimer);
+
+    toast.textContent = message;
+    toast.classList.add('show');
+
+    // Apply styles
+    toast.style.color = isError ? "red" : "";
+    toast.style.backgroundColor = isError ? "#ff949452" : "";
+
+    toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+        // Reset styles after hiding
+        setTimeout(() => {
+            toast.style.color = "";
+            toast.style.backgroundColor = "";
+        }, 300);
+    }, 3000);
+}
+
 function savedTasksToStorage() {
     localStorage.setItem("tasks", JSON.stringify(taskState.selectedTasks));
 }
@@ -100,9 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 toast.classList.add('show');
                 toast.textContent = "Task added successfully!";
 
-                setInterval(() => {
+                setTimeout(() => {
                     toast.classList.remove('show');
-                }, 3000);
+                }, 2000);
 
                 savedTasksToStorage();
                 renderTasks();
@@ -116,6 +141,13 @@ window.toggleTask = function (taskId) {
     const task = taskState.selectedTasks.find(t => t.id === taskId);
     if (task) {
         task.completed = !task.completed; //Users can uncheck and return the task to task container
+
+        if (task.completed) {
+            showToast("Task done successfully!");
+        }
+        else {
+            showToast("Task undone successfully!", true);
+        }
 
         savedTasksToStorage();
         renderTasks();
@@ -151,7 +183,7 @@ window.editTask = function (taskId) {
                 toast.classList.add('show');
                 toast.textContent = "Task edited successfully!";
 
-                setInterval(() => {
+                setTimeout(() => {
                     toast.classList.remove('show');
                 }, 3000);
 
@@ -159,9 +191,6 @@ window.editTask = function (taskId) {
                 renderTasks();
             }
             editBtn.textContent = 'Save';
-            console.log('edited');
-
-
         }
         else {
             editBtn.textContent = 'Edit';
@@ -196,7 +225,7 @@ window.clearAllTasks = function () {
     toast.classList.add('show');
     toast.textContent = "All tasks cleared successfully!";
 
-    setInterval(() => {
+    setTimeout(() => {
         toast.classList.remove('show');
     }, 3000);
 
@@ -211,8 +240,9 @@ window.clearDoneTasks = function () {
     toast.classList.add('show');
     toast.textContent = "All done tasks cleared successfully!";
 
-    setInterval(() => {
+    setTimeout(() => {
         toast.classList.remove('show');
+        return;
     }, 3000);
 
     savedTasksToStorage();
